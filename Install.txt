@@ -1,0 +1,10 @@
+Para poder utilizar este programa de debe ingresar un Archivo config 
+correctamente, la primera linea se ignora, la segunda debe contener
+el rango minimo del primer modo, seguido de una coma y el rango maximo
+del primer modo,es importante que el rango minimo sea mayor al maximo, 
+sino la generacion de numeros fallara, el rango 2 debe ser ingresado de 
+igual manera y debe ser menor al rango 1, el rango 3 debe ser ingresado de
+la misma manera y debe ser menor al rango 2. Como dato adicional el programa 
+se programo inicialmente en dev c++, en donde no funcionaba correctamente la
+generacion de numeros aleatorios, pero al pasar a visual studio code, si 
+comenzo a funcionar correctamente.
