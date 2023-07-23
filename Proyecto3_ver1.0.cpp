@@ -491,7 +491,7 @@ void MostrarResultados(vector<double>& arr, map<string,double>& tiempos ) {
             break;
         }
     }
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 1; i++) // se puede cambiar este numero para mostrar mas posiciones de los ganadores
     {
         for (const auto& pair : tiempos)
         {
