@@ -6,9 +6,7 @@
 #include <random>
 #include <map>
 #include <unordered_set>
-//#include <variant>
 using namespace std;
-
 
 int numeroMinModo1; 
 int numeroMaxModo1;
@@ -18,8 +16,6 @@ int numeroMinModo3;
 int numeroMaxModo3;
 map<string,double> tiemposAlgoritmos;
 
-using std::cout;
-using std::endl;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
@@ -100,11 +96,19 @@ auto timeHeapSort(vector<int>& arr,int Modo) {
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
     }
-    if(Modo==2)    // Descendente
-    {
+    else if(Modo==2){    // Descendente
+    
         auto start = high_resolution_clock::now();
     
          heapSortInverso(arr);
+    
+        auto end = high_resolution_clock::now();
+        return duration_cast<duration<double>>(end - start);
+    }
+    else{
+        auto start = high_resolution_clock::now();
+    
+         cout<<"No es una opcion valida " <<endl;
     
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
@@ -168,11 +172,19 @@ auto timeQuickSort(vector<int>& arr,int Modo) {
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
     }
-    if(Modo==2) // Descendente
+    else if(Modo==2) // Descendente
     {
         auto start = high_resolution_clock::now();
     
         quickSortInvertido(arr,0,arr.size()-1);
+    
+        auto end = high_resolution_clock::now();
+        return duration_cast<duration<double>>(end - start);
+    }
+    else{
+        auto start = high_resolution_clock::now();
+    
+         cout<<"No es una opcion valida " <<endl;
     
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
@@ -363,11 +375,19 @@ auto timeShellSort(vector<int>& arr, int Modo) {
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
     }
-    if(Modo ==2)  // Ascendente
+    else if(Modo ==2)  // Ascendente
     {
         auto start = high_resolution_clock::now();
     
         shellSortInverso(arr);
+    
+        auto end = high_resolution_clock::now();
+        return duration_cast<duration<double>>(end - start);
+    }
+    else{
+        auto start = high_resolution_clock::now();
+    
+         cout<<"No es una opcion valida " <<endl;
     
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
@@ -417,7 +437,7 @@ auto timeInsertionSort(vector<int>& arr,int Modo) {
     auto end = high_resolution_clock::now();
     return duration_cast<duration<double>>(end - start);
     }
-    if(Modo ==2)//Descendente
+    else if(Modo ==2)//Descendente
     {
         auto start = high_resolution_clock::now();
     
@@ -425,6 +445,14 @@ auto timeInsertionSort(vector<int>& arr,int Modo) {
     
     auto end = high_resolution_clock::now();
     return duration_cast<duration<double>>(end - start);
+    }
+    else{
+        auto start = high_resolution_clock::now();
+    
+         cout<<"No es una opcion valida " <<endl;
+    
+        auto end = high_resolution_clock::now();
+        return duration_cast<duration<double>>(end - start);
     }
     
 }
@@ -441,8 +469,6 @@ void bubbleSort(vector<int>& arr) {
                 swapped = true;
             }
         }
-
-        // Si no hubo intercambios en esta pasada, el vector ya está ordenado
         if (!swapped)
             break;
     }
@@ -471,7 +497,6 @@ void MostrarResultados(vector<double>& arr, map<string,double>& tiempos ) {
         {
             const string& key = pair.first;
             double value = pair.second;
-         //           cout << i <<"tine el valor de " <<pair.first <<"en segundo es " << pair.second <<" seconds" << endl;
             if(value == arr[i] )
             {
                 cout << i <<"._" << key <<" with " << value <<" seconds" << endl;
@@ -483,16 +508,14 @@ void MostrarResultados(vector<double>& arr, map<string,double>& tiempos ) {
 void bubbleSortInverso(vector<int>& arr) {
     int n = arr.size();
     bool swapped;
-
     for (int i = 0; i < n - 1; i++) {
         swapped = false;
         for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] < arr[j + 1]) { // Modificación: cambiar el operador de comparación
+            if (arr[j] < arr[j + 1]) { // Se cambio la comparacion
                 swap(arr[j], arr[j + 1]);
                 swapped = true;
             }
         }
-
         if (!swapped)
             break;
     }
@@ -501,25 +524,24 @@ void bubbleSortInverso(vector<int>& arr) {
 auto timeBubbleSort(vector<int>& arr, int Modo) {
     if(Modo ==1) //Ascendente
     {
-        auto start = high_resolution_clock::now();
-    
-        bubbleSort(arr);
-    
+        auto start = high_resolution_clock::now();    
+        bubbleSort(arr);    
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
     }
-    if(Modo ==2) //Descendente
+    else if(Modo ==2) //Descendente
     {
-        auto start = high_resolution_clock::now();
-    
-        bubbleSortInverso(arr);
-    
+        auto start = high_resolution_clock::now();   
+        bubbleSortInverso(arr);  
         auto end = high_resolution_clock::now();
         return duration_cast<duration<double>>(end - start);
     }
-    
-
-    
+    else{
+        auto start = high_resolution_clock::now();   
+         cout<<"No es una opcion valida " <<endl;
+        auto end = high_resolution_clock::now();
+        return duration_cast<duration<double>>(end - start);
+    }   
 }
 
 void selectionSort(vector<int>& arr) {
@@ -565,7 +587,7 @@ auto timeSelectionSort(vector<int>& arr,int Modo) {
     auto end = high_resolution_clock::now();
     return duration_cast<duration<double>>(end - start);
     }
-    if(Modo==2) //Descendente
+    else if(Modo==2) //Descendente
     {
     auto start = high_resolution_clock::now();
     
@@ -574,18 +596,23 @@ auto timeSelectionSort(vector<int>& arr,int Modo) {
     auto end = high_resolution_clock::now();
     return duration_cast<duration<double>>(end - start);
     }
+    else{
+        auto start = high_resolution_clock::now();
+    
+         cout<<"No es una opcion valida " <<endl;
+    
+        auto end = high_resolution_clock::now();
+        return duration_cast<duration<double>>(end - start);
+    }
 }
-
 
 int generarNumeroAleatorio(int min,int max) {
     random_device rd; // Generador de numeros aleatorios
     mt19937 gen(rd()); // Semilla para el generador
     uniform_int_distribution<int> distribucion(min, max); // Rango de numeros
 
- 
     return distribucion(gen); // Genera y devuelve el numero aleatorio
 }
-
 
 vector<int> EliminarDuplicadosConAleatorio(const vector<int>& arregloOriginal) {
     vector<int> arregloSinDuplicados;
@@ -600,18 +627,17 @@ vector<int> EliminarDuplicadosConAleatorio(const vector<int>& arregloOriginal) {
             // Generar un número aleatorio que no esté en el nuevo vector
             int aleatorio;
             do {
-                aleatorio = generarNumeroAleatorio(0,20000);
+                aleatorio = generarNumeroAleatorio(0,1000000);
             } while (numerosVistos.find(aleatorio) != numerosVistos.end());
 
             arregloSinDuplicados.push_back(aleatorio);
             numerosVistos.insert(aleatorio);
         }
     }
-//Sss
     return arregloSinDuplicados;
 }
 
-void ejecutarCarrera(int min, int max,int Modo,vector<int>& arregloBasico) // Rango del modo de la carrera ,MIN Y MAX YA NO SON NESESARIOS
+void ejecutarCarrera(int Modo,vector<int>& arregloBasico) 
 {
     
     vector<double> resultados;
@@ -622,23 +648,12 @@ void ejecutarCarrera(int min, int max,int Modo,vector<int>& arregloBasico) // Ra
     vector<int> arregloD5(arregloBasico);
     vector<int> arregloD6(arregloBasico);
     vector<int> arregloD7(arregloBasico);
-/*
-    vector<int> arregloOrdenadoMayMen(arregloBasico); // arreglos originales
-    vector<int> arregloOrdenadoMenMay(arregloBasico);
-    vector<int> arregloAleatorio(arregloBasico);
-    vector<int> arregloAleatorioNoDuplicados(arregloBasico);
-*/
 
         auto time_taken_bubble = timeBubbleSort(arregloD1,Modo);
         tiemposAlgoritmos["Bubble Sort"] = time_taken_bubble.count();
         cout << "Bubble time: " << tiemposAlgoritmos["Bubble Sort"]  << " seconds" << endl;
         resultados.push_back(tiemposAlgoritmos["Bubble Sort"]);
-    /*
-        for(int i=0; i < numeroRandom; i++ )
-    {
-        cout <<arregloBasico[i] << " ";
-    }
-    */
+
         auto time_taken_Selection = timeSelectionSort(arregloD2,Modo);
         tiemposAlgoritmos["Selection Sort"] =time_taken_Selection.count();
         cout << "Selection time: " << tiemposAlgoritmos["Selection Sort"]  << " seconds" << endl;
@@ -695,10 +710,9 @@ int main(){
     tiemposAlgoritmos.insert(make_pair("Heap Sort",7));
     
     ifstream archivo("Config.txt"); // Abre el archivo en modo lectura
-    if (archivo.is_open()) { // Comprueba si el archivo se abri� correctamente
+    if (archivo.is_open()) { 
         string linea;
-        
-        
+           
         getline(archivo, linea); // Ignora la primera l�nea
 		getline(archivo, linea); // Obtiene la segunda linea        
         stringstream ss(linea);        
@@ -722,7 +736,6 @@ int main(){
         numeroMaxModo3 = stoi(linea);
 			
         archivo.close(); // Cierra el archivo despues de leerlo
-        // Hacer algo con el numero global
         
         cout << "El Rango Min del Modo 1 es: " << numeroMinModo1 << endl;
         cout << "El Rango Max del Modo 1 es: " << numeroMaxModo1 << endl;
@@ -736,19 +749,15 @@ int main(){
     } else {
         cout << "No se pudo abrir el archivo." << endl;
     }    
-    //int numeroRandom = generarNumeroAleatorio(numeroMinModo1,numeroMaxModo1);
-       
-    //cout << "El numero Random es: " << numeroRandom << endl;
+
     int numeroRandom = generarNumeroAleatorio(numeroMinModo1,numeroMaxModo1);
     cout << "El numero Random1 es: " << numeroRandom << endl; //numero en el cual se creara el arreglo
-
     vector<int> arregloOriginal;
     vector<int> arregloDuplidado;
     
-
     for(int i=0; i < numeroRandom; i++ )    
     {
-        arregloOriginal.push_back(generarNumeroAleatorio(0,5000)); // Rango de los numeros a crear
+        arregloOriginal.push_back(generarNumeroAleatorio(0,1000000)); // Rango de los numeros a crear
     //    cout <<arregloBasico[i] << " ";
     }
 
@@ -757,58 +766,50 @@ int main(){
     cout << "2. Descendente " << endl;
     cout << "Opcion Elegida: " << endl;
     cin >> op;
-
-
-    
+   
     if(op == 1) //Ascendente
     {
         //Duplicar el arreglo, Ordenar el arreglo, entregar el arreglo duplicado
         cout << "Carrera por el Tablero: Modo Ordenado" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-        insertionSort(arregloDuplidado);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        shellSort(arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
 
         cout << "Carrera por el Tablero: Modo Inverso" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-        insertionSortInverso(arregloDuplidado);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        shellSortInverso(arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
 
         cout << "Carrera por el Tablero: Modo Aleatorio" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
 
         cout << "Carrera por el Tablero: Modo Aleatorio Sin Duplicados" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
         arregloDuplidado = EliminarDuplicadosConAleatorio(arregloDuplidado);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
         
-
         numeroRandom = generarNumeroAleatorio(numeroMinModo2,numeroMaxModo2);// CArrera Modo 2
         cout << "El numero Random es: " << numeroRandom << endl; //numero en el cual se creara el arreglo
 
         cout << "Carrera por las Aldeas: Modo Ordenado" << endl; 
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-        insertionSort(arregloDuplidado);
-        ejecutarCarrera(numeroMinModo2,numeroMaxModo2,1,arregloDuplidado);
-
-        for(int i=0; i < numeroRandom; i++ )    
-        {
-       // arregloOriginal.push_back(generarNumeroAleatorio(0,500)); // Rango de los numeros a crear
-            cout <<arregloDuplidado[i] << " ";
-        }
+        shellSort(arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
+       
         cout << "Carrera por las Aldeas: Modo Inverso" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-        insertionSortInverso(arregloDuplidado);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        shellSortInverso(arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
 
         cout << "Carrera por las Aldeas: Modo Aleatorio" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
 
         cout << "Carrera por las Aldeas: Modo Aleatorio Sin Duplicados" << endl;
         igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
         arregloDuplidado = EliminarDuplicadosConAleatorio(arregloDuplidado);
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,1,arregloDuplidado);
+        ejecutarCarrera(1,arregloDuplidado);
 
         for (int i = 1; i < 16; i++) //CARRERA MODO 3
         {
@@ -819,34 +820,95 @@ int main(){
 
             cout << "Carrera por las Aldeas: Modo Ordenado categoria " << i  << endl; 
             igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-            insertionSort(arregloDuplidado);
-            ejecutarCarrera(numeroMinModo3,numeroMaxModo3,1,arregloDuplidado);
+            shellSort(arregloDuplidado);
+            ejecutarCarrera(1,arregloDuplidado);
 
-            for(int i=0; i < numeroRandom; i++ )    
-            {
-        // arregloOriginal.push_back(generarNumeroAleatorio(0,500)); // Rango de los numeros a crear
-             //   cout <<arregloDuplidado[i] << " ";
-            }
+            
             cout << "Carrera por las Aldeas: Modo Inverso categoria " << i  << endl;
             igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-            insertionSortInverso(arregloDuplidado);
-            ejecutarCarrera(numeroMinModo3,numeroMaxModo3,1,arregloDuplidado);
+            shellSortInverso(arregloDuplidado);
+            ejecutarCarrera(1,arregloDuplidado);
 
             cout << "Carrera por las Aldeas: Modo Aleatorio categoria " << i << endl;
             igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
-            ejecutarCarrera(numeroMinModo3,numeroMaxModo3,1,arregloDuplidado);
+            ejecutarCarrera(1,arregloDuplidado);
 
             cout << "Carrera por las Aldeas: Modo Aleatorio Sin Duplicados categoria " << i << endl;
             igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
             arregloDuplidado = EliminarDuplicadosConAleatorio(arregloDuplidado);
-            ejecutarCarrera(numeroMinModo3,numeroMaxModo3,1,arregloDuplidado);   
+            ejecutarCarrera(1,arregloDuplidado);   
         }
     }
     if(op == 2) // Descendente
     {
-        ejecutarCarrera(numeroMinModo1,numeroMaxModo1,2,arregloOriginal);
-	}
+        //Duplicar el arreglo, Ordenar el arreglo, entregar el arreglo duplicado
+        cout << "Carrera por el Tablero: Modo Ordenado" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        shellSortInverso(arregloDuplidado);
+        ejecutarCarrera(2,arregloDuplidado);// Ver si el insetion va aca
 
+        cout << "Carrera por el Tablero: Modo Inverso" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        shellSort(arregloDuplidado);
+        ejecutarCarrera(2,arregloDuplidado);
+
+        cout << "Carrera por el Tablero: Modo Aleatorio" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        ejecutarCarrera(2,arregloDuplidado);
+
+        cout << "Carrera por el Tablero: Modo Aleatorio Sin Duplicados" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        arregloDuplidado = EliminarDuplicadosConAleatorio(arregloDuplidado);
+        ejecutarCarrera(2,arregloDuplidado);
+        
+
+        numeroRandom = generarNumeroAleatorio(numeroMinModo2,numeroMaxModo2);// CArrera Modo 2
+        cout << "El numero Random es: " << numeroRandom << endl; //numero en el cual se creara el arreglo
+
+        cout << "Carrera por las Aldeas: Modo Ordenado" << endl; 
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        shellSortInverso(arregloDuplidado);
+        ejecutarCarrera(2,arregloDuplidado);
+
+        cout << "Carrera por las Aldeas: Modo Inverso" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        shellSort(arregloDuplidado);
+        ejecutarCarrera(2,arregloDuplidado);
+
+        cout << "Carrera por las Aldeas: Modo Aleatorio" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        ejecutarCarrera(2,arregloDuplidado);
+
+        cout << "Carrera por las Aldeas: Modo Aleatorio Sin Duplicados" << endl;
+        igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+        arregloDuplidado = EliminarDuplicadosConAleatorio(arregloDuplidado);
+        ejecutarCarrera(2,arregloDuplidado);
+
+        for (int i = 1; i < 16; i++) //CARRERA MODO 3
+        {
+            numeroRandom = generarNumeroAleatorio(numeroMinModo3,numeroMaxModo3);// CArrera Modo 2
+            cout << "El numero Random es: " << numeroRandom << endl; //numero en el cual se creara el arreglo
+            cout << "La categoria " << i  << endl; //numero en el cual se creara el arreglo
+
+            cout << "Carrera por las Aldeas: Modo Ordenado categoria " << i  << endl; 
+            igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+            shellSortInverso(arregloDuplidado);
+            ejecutarCarrera(2,arregloDuplidado);
+
+            cout << "Carrera por las Aldeas: Modo Inverso categoria " << i  << endl;
+            igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+            shellSort(arregloDuplidado);
+            ejecutarCarrera(2,arregloDuplidado);// ver si el insetion va aca
+
+            cout << "Carrera por las Aldeas: Modo Aleatorio categoria " << i << endl;
+            igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+            ejecutarCarrera(2,arregloDuplidado);
+
+            cout << "Carrera por las Aldeas: Modo Aleatorio Sin Duplicados categoria " << i << endl;
+            igualarArreglos(arregloOriginal,arregloDuplidado,numeroRandom);
+            arregloDuplidado = EliminarDuplicadosConAleatorio(arregloDuplidado);
+            ejecutarCarrera(2,arregloDuplidado);   
+        }
+	}
     return 0;   
-    
 }
